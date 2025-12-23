@@ -12,9 +12,16 @@
   <header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-slate-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-16">
-        <a href="#" class="flex items-center gap-2">
-          <span class="inline-flex h-8 w-8 rounded-xl bg-blue-600 text-white items-center justify-center text-sm font-bold">AL</span>
-          <span class="text-2xl font-extrabold tracking-tight text-slate-900">Antenna Link</span>
+        <a href="#" class="flex items-center gap-3">
+          <img
+            src="images/antenna_link_small.gif"
+            alt="Antenna Link"
+            class="h-8 md:h-9 w-auto"
+            loading="eager"
+            decoding="async"
+          />
+          <!-- 로고만 쓰고 싶으면 아래 텍스트 줄은 삭제해도 됩니다 -->
+          <span class="sr-only">Antenna Link</span>
         </a>
         <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
           <a href="#why" class="hover:text-blue-700">Why Antenna Link</a>
@@ -51,6 +58,87 @@
       </div>
     </div>
   </header>
+
+<!-- Top Product Info Strip (EN) -->
+<section class="border-b border-slate-200 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+    <div class="grid lg:grid-cols-12 gap-4 items-center">
+      <!-- Left: Product identity -->
+      <div class="lg:col-span-7 flex gap-4 items-center">
+        <!-- Replace with your product photo -->
+        <div class="w-24 h-24 md:w-28 md:h-28 rounded-2xl border border-slate-200 bg-slate-50 overflow-hidden shrink-0 flex items-center justify-center">
+          <img
+            src="https://images.unsplash.com/photo-1581579186983-2f0d74cd7b8a?auto=format&fit=crop&w=400&q=80"
+            alt="WiWorld Dryer Product (Sample)"
+            class="w-full h-full object-cover"
+          />
+        </div>
+
+        <div class="min-w-0">
+          <div class="flex flex-wrap items-center gap-2">
+            <span class="inline-flex px-2.5 py-1 rounded-full bg-indigo-50 text-indigo-700 text-xs font-semibold border border-indigo-100">
+              Featured Product · WiWorld
+            </span>
+            <span class="inline-flex px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-semibold border border-emerald-100">
+              OEM/ODM Available
+            </span>
+            <span class="text-xs text-slate-500">For cabinets / RF chains / harsh environments</span>
+          </div>
+
+          <h2 class="mt-2 text-base md:text-lg font-extrabold text-slate-900 leading-snug">
+            WiWorld Smart Dehydrator
+          </h2>
+
+          <p class="mt-1 text-xs md:text-sm text-slate-600 line-clamp-2">
+            A compact, industrial-grade drying solution designed to protect field equipment from moisture.
+            Stable dew-point control, low-power operation, and remote monitoring ready.
+          </p>
+        </div>
+      </div>
+
+      <!-- Middle: Key specs -->
+      <div class="lg:col-span-3">
+        <dl class="grid grid-cols-2 gap-2 text-xs md:text-sm">
+          <div class="rounded-2xl border border-slate-200 bg-slate-50 p-3">
+            <dt class="text-slate-500">Dew Point</dt>
+            <dd class="mt-0.5 font-semibold text-slate-900">≤ -40°C*</dd>
+          </div>
+          <div class="rounded-2xl border border-slate-200 bg-slate-50 p-3">
+            <dt class="text-slate-500">Airflow</dt>
+            <dd class="mt-0.5 font-semibold text-slate-900">2 L/min*</dd>
+          </div>
+          <div class="rounded-2xl border border-slate-200 bg-slate-50 p-3">
+            <dt class="text-slate-500">Power</dt>
+            <dd class="mt-0.5 font-semibold text-slate-900">≤ 120 W*</dd>
+          </div>
+          <div class="rounded-2xl border border-slate-200 bg-slate-50 p-3">
+            <dt class="text-slate-500">Interface</dt>
+            <dd class="mt-0.5 font-semibold text-slate-900">Web</dd>
+          </div>
+        </dl>
+        <p class="mt-2 text-[11px] text-slate-500">
+          *Sample values for layout. Replace with verified specs, test conditions, and certifications.
+        </p>
+      </div>
+
+      <!-- Right: CTAs -->
+      <div class="lg:col-span-2 flex lg:justify-end gap-2">
+        <a
+          href="#match"
+          class="w-full lg:w-auto px-4 py-2.5 rounded-2xl bg-blue-600 text-white text-xs md:text-sm font-semibold hover:bg-blue-700 text-center"
+        >
+          Request a Quote →
+        </a>
+        <a
+          href="#resources"
+          class="hidden sm:inline-flex w-full lg:w-auto px-4 py-2.5 rounded-2xl border border-slate-300 text-slate-900 text-xs md:text-sm font-semibold hover:bg-slate-50 justify-center"
+        >
+          Get Datasheet
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
 
   <!-- Hero -->
   <section class="relative overflow-hidden">
