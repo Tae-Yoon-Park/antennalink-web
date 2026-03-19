@@ -1,792 +1,1063 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Antenna Link | LEO Ground Station OEM Total Solution Marketplace</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <meta name="description" content="An OEM total-solution brokerage platform for LEO ground stations. Connects technology providers, manufacturers, and system integrators to design, manufacture, and deploy antenna, RF, tracking, filters, modems, and more.">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Antenna Link | OEM Total Solution</title>
+  <style>
+    :root {
+      --bg: #f3f6fb;
+      --surface: #ffffff;
+      --surface-2: #eef3fb;
+      --border: #d9e2f0;
+      --text: #0d1b3d;
+      --muted: #5f6f90;
+      --primary: #2f68ea;
+      --primary-dark: #123a9b;
+      --navy: #071633;
+      --navy-2: #0a1f4b;
+      --radius: 22px;
+      --shadow: 0 12px 32px rgba(10, 24, 63, 0.08);
+      --container: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select, textarea { font: inherit; }
+
+    .container {
+      width: min(var(--container), calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 84px 0;
+    }
+
+    .section-head {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 14px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      font-size: 13px;
+      color: var(--primary-dark);
+      background: rgba(47, 104, 234, 0.06);
+      margin-bottom: 16px;
+    }
+
+    h1, h2, h3, h4, p { margin: 0; }
+
+    h1 {
+      font-size: clamp(44px, 6vw, 78px);
+      line-height: 1.02;
+      letter-spacing: -0.04em;
+      max-width: 760px;
+    }
+
+    h2 {
+      font-size: clamp(30px, 3vw, 48px);
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      margin-bottom: 14px;
+    }
+
+    .lead {
+      font-size: 21px;
+      color: var(--muted);
+      max-width: 700px;
+    }
+
+    .body-large {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 780px;
+    }
+
+    .btn-row {
+      display: flex;
+      gap: 14px;
+      margin-top: 32px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 56px;
+      padding: 0 26px;
+      border-radius: 18px;
+      font-weight: 700;
+      transition: 0.2s ease;
+      border: 1px solid transparent;
+      cursor: pointer;
+    }
+
+    .btn.primary {
+      background: var(--primary);
+      color: #fff;
+      box-shadow: 0 10px 24px rgba(47, 104, 234, 0.2);
+    }
+
+    .btn.primary:hover { transform: translateY(-1px); }
+
+    .btn.secondary {
+      background: transparent;
+      color: var(--text);
+      border-color: var(--border);
+    }
+
+    .btn.dark {
+      background: #09152f;
+      color: #fff;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(243, 246, 251, 0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(217, 226, 240, 0.7);
+    }
+
+    .nav-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      min-height: 82px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      font-size: 28px;
+      letter-spacing: -0.04em;
+    }
+
+    .brand-logo {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.2);
+      position: relative;
+    }
+
+    .brand-logo::before,
+    .brand-logo::after {
+      content: "";
+      position: absolute;
+      border: 2px solid #fff;
+      border-radius: 999px;
+      inset: 10px 4px;
+      transform: rotate(40deg);
+      opacity: .95;
+    }
+
+    .brand-logo::after {
+      inset: 10px 14px;
+      transform: rotate(-40deg);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      flex-wrap: wrap;
+      justify-content: center;
+      flex: 1;
+    }
+
+    .nav a {
+      font-size: 15px;
+      color: #233457;
+    }
+
+    .nav-cta {
+      white-space: nowrap;
+    }
+
+    .hero {
+      padding: 42px 0 80px;
+      background: linear-gradient(180deg, #f4f7fc 0%, #edf3fb 100%);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 34px;
+      align-items: stretch;
+    }
+
+    .hero-copy {
+      padding: 36px 0 0;
+    }
+
+    .hero-copy .accent {
+      color: var(--primary);
+    }
+
+    .hero-note {
+      margin-top: 22px;
+      font-size: 15px;
+      color: var(--muted);
+    }
+
+    .hero-card {
+      background: rgba(255,255,255,0.86);
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      box-shadow: var(--shadow);
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+      min-height: 100%;
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .stat-box {
+      padding: 18px;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: var(--surface);
+    }
+
+    .stat-box .label {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .stat-box .value {
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    .request-card {
+      padding: 24px;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      background: var(--surface);
+    }
+
+    .request-card h3 {
+      font-size: 24px;
+      margin-bottom: 12px;
+    }
+
+    .request-card p,
+    .request-list li,
+    .card p,
+    .resource-card p,
+    .feature-card p,
+    .step-card p,
+    .provider-card p,
+    .form-copy p,
+    .footer p,
+    .footer a,
+    .mini {
+      color: var(--muted);
+    }
+
+    .request-list {
+      list-style: none;
+      padding: 0;
+      margin: 16px 0 0;
+      display: grid;
+      gap: 12px;
+    }
+
+    .request-list li {
+      display: grid;
+      grid-template-columns: 132px 1fr;
+      gap: 16px;
+      font-size: 15px;
+      padding-bottom: 10px;
+      border-bottom: 1px dashed #dde6f3;
+    }
+
+    .request-list li:last-child { border-bottom: 0; padding-bottom: 0; }
+    .request-list strong { color: var(--text); }
+
+    .cards-3,
+    .cards-4 {
+      display: grid;
+      gap: 18px;
+    }
+
+    .cards-3 { grid-template-columns: repeat(3, 1fr); }
+    .cards-4 { grid-template-columns: repeat(4, 1fr); }
+
+    .card,
+    .feature-card,
+    .provider-card,
+    .step-card,
+    .resource-card {
+      background: rgba(255,255,255,0.72);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      box-shadow: 0 6px 18px rgba(12, 24, 56, 0.04);
+    }
+
+    .card,
+    .provider-card,
+    .resource-card,
+    .feature-card {
+      padding: 26px;
+    }
+
+    .card h3,
+    .provider-card h3,
+    .resource-card h3,
+    .feature-card h3,
+    .step-card h3 {
+      font-size: 24px;
+      margin-bottom: 12px;
+      line-height: 1.18;
+    }
+
+    .card .kicker,
+    .provider-card .kicker,
+    .resource-card .kicker {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-bottom: 12px;
+    }
+
+    .meta-grid {
+      margin-top: 22px;
+      display: grid;
+      gap: 10px;
+      font-size: 15px;
+    }
+
+    .meta-item {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding-bottom: 10px;
+      border-bottom: 1px dashed #dce4f1;
+    }
+
+    .meta-item span:first-child { color: var(--muted); }
+    .meta-item:last-child { border-bottom: 0; padding-bottom: 0; }
+
+    .card .btn,
+    .resource-card .btn { margin-top: 22px; width: 100%; }
+
+    .why-band {
+      background: #fff;
+      border-top: 1px solid #e3e8f3;
+      border-bottom: 1px solid #e3e8f3;
+    }
+
+    .feature-card {
+      text-align: center;
+      padding-top: 32px;
+    }
+
+    .icon-slot {
+      width: 74px;
+      height: 74px;
+      border-radius: 22px;
+      margin: 0 auto 18px;
+      background: linear-gradient(135deg, rgba(47,104,234,.14), rgba(18,58,155,.06));
+      border: 1px dashed rgba(47,104,234,.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary-dark);
+      font-size: 12px;
+      font-weight: 700;
+      text-align: center;
+      padding: 8px;
+    }
+
+    .split-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: end;
+      margin-bottom: 26px;
+      flex-wrap: wrap;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .step-card {
+      padding: 24px;
+      position: relative;
+      overflow: hidden;
+      min-height: 220px;
+    }
+
+    .step-no {
+      width: 42px;
+      height: 42px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 14px;
+      background: var(--primary);
+      color: #fff;
+      font-weight: 800;
+      margin-bottom: 18px;
+    }
+
+    .dark-section {
+      background: linear-gradient(180deg, var(--navy) 0%, #091a40 100%);
+      color: #fff;
+    }
+
+    .dark-section .lead,
+    .dark-section .body-large,
+    .dark-section .form-copy p,
+    .dark-section .mini,
+    .dark-section .footer p,
+    .dark-section .footer a,
+    .dark-section .resource-card p,
+    .dark-section .resource-card .kicker {
+      color: rgba(226, 234, 255, 0.75);
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 32px;
+      align-items: start;
+    }
+
+    .project-form {
+      padding: 22px;
+      border-radius: 28px;
+      border: 1px solid rgba(150, 174, 231, 0.25);
+      background: rgba(5, 18, 45, 0.34);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.02);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .field,
+    .project-form textarea,
+    .subscribe input {
+      width: 100%;
+      min-height: 54px;
+      border-radius: 16px;
+      border: 1px solid rgba(150, 174, 231, 0.28);
+      background: rgba(255,255,255,0.04);
+      color: #fff;
+      padding: 14px 16px;
+      outline: none;
+    }
+
+    .field::placeholder,
+    .project-form textarea::placeholder,
+    .subscribe input::placeholder { color: rgba(226, 234, 255, 0.45); }
+
+    .project-form textarea {
+      min-height: 120px;
+      resize: vertical;
+      grid-column: 1 / -1;
+    }
+
+    .form-check {
+      display: flex;
+      gap: 10px;
+      align-items: start;
+      margin: 14px 0 18px;
+      color: rgba(226, 234, 255, 0.82);
+      font-size: 14px;
+    }
+
+    .subscribe {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .subscribe input {
+      background: rgba(255,255,255,0.92);
+      color: var(--text);
+      border-color: #ced9ec;
+      min-width: 260px;
+      flex: 1;
+    }
+
+    .resources-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 28px;
+    }
+
+    .resource-card {
+      background: rgba(255,255,255,0.04);
+      border-color: rgba(150, 174, 231, 0.16);
+    }
+
+    .footer {
+      margin-top: 56px;
+      padding-top: 28px;
+      border-top: 1px solid rgba(150, 174, 231, 0.14);
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 22px;
+    }
+
+    .footer h4 {
+      font-size: 22px;
+      margin-bottom: 12px;
+    }
+
+    .hamburger {
+      display: none;
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: #fff;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+    }
+
+    .hamburger span,
+    .hamburger span::before,
+    .hamburger span::after {
+      display: block;
+      width: 18px;
+      height: 2px;
+      border-radius: 999px;
+      background: var(--text);
+      position: relative;
+      content: "";
+    }
+
+    .hamburger span::before { position: absolute; top: -6px; }
+    .hamburger span::after { position: absolute; top: 6px; }
+
+    @media (max-width: 1100px) {
+      .hero-grid,
+      .project-grid,
+      .footer,
+      .cards-3,
+      .resources-grid,
+      .steps,
+      .cards-4 {
+        grid-template-columns: 1fr;
+      }
+
+      .form-grid { grid-template-columns: 1fr; }
+      .nav { display: none; }
+      .hamburger { display: inline-flex; }
+      .nav-wrap { min-height: 76px; }
+      .mobile-nav {
+        display: none;
+        padding: 0 0 18px;
+      }
+      .mobile-nav.open { display: grid; gap: 10px; }
+      .mobile-nav a {
+        padding: 12px 14px;
+        border-radius: 14px;
+        background: rgba(255,255,255,0.7);
+        border: 1px solid var(--border);
+      }
+      .nav-cta { display: none; }
+    }
+
+    @media (min-width: 1101px) {
+      .mobile-nav { display: none !important; }
+    }
+
+    @media (max-width: 720px) {
+      .container { width: min(var(--container), calc(100% - 24px)); }
+      .section { padding: 64px 0; }
+      .hero { padding: 20px 0 58px; }
+      h1 { font-size: 42px; }
+      .lead { font-size: 18px; }
+      .btn { width: 100%; }
+      .btn-row { display: grid; }
+      .request-list li,
+      .meta-item { display: block; }
+      .stat-grid { grid-template-columns: 1fr; }
+      .brand { font-size: 24px; }
+      .subscribe { display: grid; }
+      .subscribe input { min-width: 0; }
+    }
+  </style>
 </head>
-<body class="min-h-screen bg-slate-50 text-slate-900">
-  <!-- Header -->
-  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-slate-200">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-16">
-        <a href="#" class="flex items-center gap-3">
-          <img
-            src="images/antenna_link_small.gif"
-            alt="Antenna Link"
-            class="h-8 md:h-9 w-auto"
-            loading="eager"
-            decoding="async"
-          />
-          <!-- 로고만 쓰고 싶으면 아래 텍스트 줄은 삭제해도 됩니다 -->
-          <span class="sr-only">Antenna Link</span>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <div class="nav-wrap">
+        <a class="brand" href="#top" aria-label="Antenna Link home">
+          <span class="brand-logo" aria-hidden="true"></span>
+          <span>Antenna Link</span>
         </a>
-        <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
-          <a href="#why" class="hover:text-blue-700">Why Antenna Link</a>
-          <a href="#marketplace" class="hover:text-blue-700">Solutions Marketplace</a>
-          <a href="#providers" class="hover:text-blue-700">Technology Providers</a>
-          <a href="#manufacturers" class="hover:text-blue-700">OEM Partners</a>
-          <a href="#workflow" class="hover:text-blue-700">How It Works</a>
-          <a href="#match" class="hover:text-blue-700">Project Match</a>
-          <a href="#resources" class="hover:text-blue-700">Resources</a>
+
+        <nav class="nav" aria-label="Main navigation">
+          <a href="#why">Why Antenna Link</a>
+          <a href="#solutions">Solutions Marketplace</a>
+          <a href="#providers">Technology Providers</a>
+          <a href="#oem">OEM Partners</a>
+          <a href="#how">How It Works</a>
+          <a href="#project">Project Match</a>
+          <a href="#resources">Resources</a>
         </nav>
-        <div class="hidden md:flex items-center gap-3">
-          <a href="#match" class="text-sm font-semibold text-slate-700 hover:text-blue-700">Login / Sign up</a>
-          <a href="#match" class="px-4 py-2 rounded-2xl bg-blue-600 text-white text-sm font-semibold shadow hover:bg-blue-700">
-            Request a Project
-          </a>
-        </div>
-        <button id="mobileBtn" class="md:hidden p-2 rounded-lg border border-slate-200 hover:bg-slate-100" aria-label="open menu">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-          </svg>
+
+        <a class="btn primary nav-cta" href="#project">Request a Project</a>
+        <button class="hamburger" id="menuBtn" aria-label="Open menu" aria-expanded="false">
+          <span></span>
         </button>
       </div>
-    </div>
-    <!-- mobile menu -->
-    <div id="mobileMenu" class="md:hidden hidden border-t border-slate-200 bg-white">
-      <div class="max-w-7xl mx-auto px-4 py-3 grid gap-2 text-sm">
-        <a href="#why" class="py-2">Why Antenna Link</a>
-        <a href="#marketplace" class="py-2">Solutions Marketplace</a>
-        <a href="#providers" class="py-2">Technology Providers</a>
-        <a href="#manufacturers" class="py-2">OEM Partners</a>
-        <a href="#workflow" class="py-2">How It Works</a>
-        <a href="#match" class="py-2">Project Match</a>
-        <a href="#resources" class="py-2">Resources</a>
-      </div>
+      <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+        <a href="#why">Why Antenna Link</a>
+        <a href="#solutions">Solutions Marketplace</a>
+        <a href="#providers">Technology Providers</a>
+        <a href="#oem">OEM Partners</a>
+        <a href="#how">How It Works</a>
+        <a href="#project">Project Match</a>
+        <a href="#resources">Resources</a>
+      </nav>
     </div>
   </header>
 
-<!-- Top Product Info Strip (EN) -->
-<section class="border-b border-slate-200 bg-white">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-    <div class="grid lg:grid-cols-12 gap-4 items-center">
-      <!-- Left: Product identity -->
-      <div class="lg:col-span-7 flex gap-4 items-center">
-        <!-- Replace with your product photo -->
-        <button
-          type="button"
-          id="aldThumb"
-          class="w-24 h-24 md:w-28 md:h-28 rounded-2xl border border-slate-200 bg-slate-50 overflow-hidden shrink-0 flex items-center justify-center cursor-zoom-in"
-          aria-label="Open ALD-200 image"
-        >
-          <img
-            src="images/ALD_200.jpg"
-            alt="ALD-200 Dehydrator"
-            class="w-full h-full object-cover"
-            loading="eager"
-            decoding="async"
-          />
-        </button>
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow">LEO Ground Station · OEM Total Solution · B2B Marketplace</div>
+          <h1>Build your LEO ground-station solution with <span class="accent">technology providers</span>, manufacturers, and integrators.</h1>
+          <p class="lead" style="margin-top: 26px;">
+            Antenna Link is a specialized brokerage platform for OEM-ready ground-station projects. We connect missing technologies, manufacturing capacity, and integration support into one deliverable solution.
+          </p>
+          <div class="btn-row">
+            <a class="btn primary" href="#project">Request Project Matching</a>
+            <a class="btn secondary" href="#solutions">View the Marketplace</a>
+          </div>
+          <p class="hero-note">LEO · Weather-satellite ground stations · Maritime & terrestrial tracking systems · X/S/Ka-band RF chains · OEM antenna manufacturing</p>
+        </div>
 
-        <div class="min-w-0">
-          <div class="flex flex-wrap items-center gap-2">
-            <span class="inline-flex px-2.5 py-1 rounded-full bg-indigo-50 text-indigo-700 text-xs font-semibold border border-indigo-100">
-              Featured Product · AntennaLink
-            </span>
-            <span class="inline-flex px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-semibold border border-emerald-100">
-              OEM/ODM Available
-            </span>
-            <span class="text-xs text-slate-500">For cabinets / RF chains / harsh environments</span>
+        <aside class="hero-card">
+          <div class="stat-grid">
+            <div class="stat-box">
+              <div class="label">Primary Band</div>
+              <div class="value">X / S / Ka</div>
+            </div>
+            <div class="stat-box">
+              <div class="label">Antenna Range</div>
+              <div class="value">1–4 m</div>
+            </div>
+            <div class="stat-box">
+              <div class="label">Delivery Mode</div>
+              <div class="value">OEM</div>
+            </div>
+            <div class="stat-box">
+              <div class="label">Project Type</div>
+              <div class="value">Turn-key</div>
+            </div>
           </div>
 
-          <h2 class="mt-2 text-base md:text-lg font-extrabold text-slate-900 leading-snug">
-            ALD-200 Smart Dehydrator
-          </h2>
-
-          <p class="mt-1 text-xs md:text-sm text-slate-600 line-clamp-2">
-            A compact, industrial-grade drying solution designed to protect field equipment from moisture.
-            Stable dew-point control, low-power operation, and remote monitoring ready.
-          </p>
-        </div>
+          <div class="request-card">
+            <h3>Do you have an active LEO ground-station project?</h3>
+            <p>Share a brief summary and Antenna Link will match suitable technology providers, OEM manufacturing partners, and integration support.</p>
+            <ul class="request-list">
+              <li><strong>Primary band</strong><span>X / S band, Earth observation</span></li>
+              <li><strong>Antenna</strong><span>≤ 3.7 m tracking antenna, auto-tracking required</span></li>
+              <li><strong>What’s missing</strong><span>RF front-end design + OEM manufacturing partner</span></li>
+              <li><strong>Desired delivery</strong><span>Turn-key OEM supply + local technical support</span></li>
+            </ul>
+            <a class="btn dark" href="#project" style="margin-top: 22px; width: 100%;">Submit a Similar Request</a>
+          </div>
+        </aside>
       </div>
+    </section>
 
-      <!-- Middle: Key specs -->
-      <div class="lg:col-span-3">
-        <dl class="grid grid-cols-2 gap-2 text-xs md:text-sm">
-          <div class="rounded-2xl border border-slate-200 bg-slate-50 p-3">
-            <dt class="text-slate-500">Dew Point</dt>
-            <dd class="mt-0.5 font-semibold text-slate-900">≤ -40°C*</dd>
-          </div>
-          <div class="rounded-2xl border border-slate-200 bg-slate-50 p-3">
-            <dt class="text-slate-500">Airflow</dt>
-            <dd class="mt-0.5 font-semibold text-slate-900">2 L/min*</dd>
-          </div>
-          <div class="rounded-2xl border border-slate-200 bg-slate-50 p-3">
-            <dt class="text-slate-500">Power</dt>
-            <dd class="mt-0.5 font-semibold text-slate-900">≤ 120 W*</dd>
-          </div>
-          <div class="rounded-2xl border border-slate-200 bg-slate-50 p-3">
-            <dt class="text-slate-500">Interface</dt>
-            <dd class="mt-0.5 font-semibold text-slate-900">Web</dd>
-          </div>
-        </dl>
-        <p class="mt-2 text-[11px] text-slate-500">
-          *Sample values for layout. Replace with verified specs, test conditions, and certifications.
-        </p>
-      </div>
-
-      <!-- Right: CTAs -->
-      <div class="lg:col-span-2 flex lg:justify-end gap-2">
-        <a
-          href="#match"
-          class="w-full lg:w-auto px-4 py-2.5 rounded-2xl bg-blue-600 text-white text-xs md:text-sm font-semibold hover:bg-blue-700 text-center"
-        >
-          Request a Quote →
-        </a>
-        <a
-          href="#resources"
-          class="hidden sm:inline-flex w-full lg:w-auto px-4 py-2.5 rounded-2xl border border-slate-300 text-slate-900 text-xs md:text-sm font-semibold hover:bg-slate-50 justify-center"
-        >
-          Get Datasheet
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-  <!-- Hero -->
-  <section class="relative overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-br from-slate-50 via-blue-50/70 to-indigo-100 pointer-events-none"></div>
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20">
-      <div class="grid lg:grid-cols-2 gap-10 items-center">
-        <div>
-          <p class="inline-flex px-3 py-1 rounded-full bg-blue-50 border border-blue-100 text-xs font-semibold text-blue-700 mb-4">
-            LEO Ground Station · OEM Total Solution · B2B Marketplace
-          </p>
-          <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight text-slate-900">
-            Build your LEO ground-station solution<br class="hidden md:block" />
-            with <span class="text-blue-700">technology providers, manufacturers, and integrators</span>.
-          </h1>
-          <p class="mt-4 text-base md:text-lg text-slate-600">
-            Antenna Link is a <strong class="font-semibold">specialized brokerage platform for LEO ground stations</strong>
-            that connects tech companies without finished products, OEM partners with manufacturing capacity, and customers
-            who need complete ground-station solutions—all in one place.
-            We fill the missing pieces across antennas, RF modules, tracking, filters, modems, and more to deliver an
-            OEM total solution.
-          </p>
-          <div class="mt-8 flex flex-wrap items-center gap-3">
-            <a href="#match" class="px-6 py-3 rounded-2xl bg-blue-600 text-white text-sm md:text-base font-semibold shadow hover:bg-blue-700">
-              Request Project Matching
-            </a>
-            <a href="#marketplace" class="px-6 py-3 rounded-2xl border border-slate-300 text-sm md:text-base font-semibold text-slate-800 hover:bg-white">
-              View the Marketplace
-            </a>
-          </div>
-          <div class="mt-6 text-xs md:text-sm text-slate-500">
-            LEO · Weather-satellite ground stations / Maritime & terrestrial tracking systems / X·S·Ka-band RF chains / OEM antenna manufacturing
+    <section class="section why-band" id="why">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">Why Antenna Link</div>
+            <h2>Not a product catalog. A project-delivery network.</h2>
+            <p class="body-large">Antenna Link brings customers, niche technology teams, and OEM manufacturers to one table so the project can be delivered as one complete solution.</p>
           </div>
         </div>
-        <div class="lg:pl-8">
-          <div class="bg-white/80 border border-slate-200 rounded-2xl shadow-lg p-6 md:p-7">
-            <h3 class="text-sm font-semibold text-slate-800 flex items-center gap-2">
-              <span class="inline-flex h-6 w-6 rounded-lg bg-blue-600 text-white items-center justify-center text-xs">1</span>
-              Do you have an active LEO ground-station project?
-            </h3>
-            <p class="mt-2 text-sm text-slate-600">
-              If you summarize requirements like the example below, Antenna Link will match the right technology providers and OEM partners.
-            </p>
-            <dl class="mt-4 space-y-3 text-xs md:text-sm">
-              <div class="flex justify-between gap-4">
-                <dt class="text-slate-500 w-32 shrink-0">Primary band</dt>
-                <dd class="font-medium text-slate-800">X / S Band, LEO Earth Observation</dd>
-              </div>
-              <div class="flex justify-between gap-4">
-                <dt class="text-slate-500 w-32 shrink-0">Antenna</dt>
-                <dd class="font-medium text-slate-800">≤ 3.7 m tracking antenna, auto-tracking required</dd>
-              </div>
-              <div class="flex justify-between gap-4">
-                <dt class="text-slate-500 w-32 shrink-0">What’s missing</dt>
-                <dd class="font-medium text-slate-800">RF front-end design + OEM manufacturing partner</dd>
-              </div>
-              <div class="flex justify-between gap-4">
-                <dt class="text-slate-500 w-32 shrink-0">Desired delivery</dt>
-                <dd class="font-medium text-slate-800">Turn-key OEM supply + local technical support</dd>
-              </div>
-            </dl>
-            <button onclick="document.getElementById('match')?.scrollIntoView({behavior:'smooth'})"
-              class="mt-5 w-full px-4 py-2.5 rounded-2xl bg-slate-900 text-white text-sm font-semibold hover:bg-black">
-              Submit a similar request →
-            </button>
+
+        <div class="cards-4">
+          <article class="feature-card">
+            <div class="icon-slot">ICON 01</div>
+            <h3>Focused on LEO Projects</h3>
+            <p>We go deep into weather-satellite, maritime, and terrestrial ground-station requirements instead of listing unrelated products.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="icon-slot">ICON 02</div>
+            <h3>Technology Without Product Can Join</h3>
+            <p>Specialized teams with RF, tracking, or algorithm expertise can participate even when they do not have a finished product line.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="icon-slot">ICON 03</div>
+            <h3>OEM/ODM Delivery</h3>
+            <p>We combine components, engineering, and manufacturing partners into an OEM-ready package for customer delivery.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="icon-slot">ICON 04</div>
+            <h3>Partner Matching</h3>
+            <p>We assemble the right combination of providers, manufacturers, and integrators based on project scope and schedule.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="solutions">
+      <div class="container">
+        <div class="split-head">
+          <div>
+            <div class="eyebrow">Solutions Marketplace</div>
+            <h2>Project-ready solution packages</h2>
+            <p class="body-large">This marketplace is organized around deployable LEO ground-station solutions rather than standalone parts.</p>
+          </div>
+          <a class="btn secondary" href="#project">Inquire about listing a solution</a>
+        </div>
+
+        <div class="cards-3">
+          <article class="card">
+            <span class="kicker">Solution 01</span>
+            <h3>Turn-key LEO TTC Ground Station</h3>
+            <p>An integrated package including a 3 m tracking antenna, X/S-band RF chain, modem, monitoring, and dehydrator.</p>
+            <div class="meta-grid">
+              <div class="meta-item"><span>Band</span><span>X / S Band</span></div>
+              <div class="meta-item"><span>Scope</span><span>TTC / EO / LEO, 5–10 year lifecycle</span></div>
+              <div class="meta-item"><span>Delivery</span><span>OEM turn-key supply</span></div>
+            </div>
+            <a class="btn dark" href="#project">Request a quote</a>
+          </article>
+
+          <article class="card">
+            <span class="kicker">Solution 02</span>
+            <h3>Maritime LEO Auto-Tracking Subsystem</h3>
+            <p>A maritime auto-tracking antenna subsystem designed for vibration environments and long-term control stability.</p>
+            <div class="meta-grid">
+              <div class="meta-item"><span>Environment</span><span>Maritime / vessels / offshore</span></div>
+              <div class="meta-item"><span>Tech</span><span>Monopulse tracking, DSP-based control</span></div>
+              <div class="meta-item"><span>Offering</span><span>OEM subsystem + algorithm licensing</span></div>
+            </div>
+            <a class="btn dark" href="#project">Request matching</a>
+          </article>
+
+          <article class="card">
+            <span class="kicker">Solution 03</span>
+            <h3>X/S-band RF Front-End OEM Package</h3>
+            <p>A front-end package including LNA, BUC, filters, line amps, and waveguides with custom tuning for the target environment.</p>
+            <div class="meta-grid">
+              <div class="meta-item"><span>Includes</span><span>LNA / BUC / filters / amps / switches</span></div>
+              <div class="meta-item"><span>Options</span><span>Custom filter design by band and temperature</span></div>
+              <div class="meta-item"><span>Delivery</span><span>OEM modules + integration testing</span></div>
+            </div>
+            <a class="btn dark" href="#project">Consult configuration</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="providers">
+      <div class="container">
+        <div class="split-head">
+          <div>
+            <div class="eyebrow">Technology Providers</div>
+            <h2>Specialized teams can join without finished products</h2>
+            <p class="body-large">RF design, tracking, algorithm, and system integration expertise can participate in third-party projects through Antenna Link.</p>
+          </div>
+          <a class="btn secondary" href="#project">Join as a technology provider</a>
+        </div>
+
+        <div class="cards-3">
+          <article class="provider-card">
+            <span class="kicker">TP-01</span>
+            <h3>LEO Tracking Algorithm Lab</h3>
+            <p>Tracking algorithms for LEO ground stations using Kalman filtering, monopulse control, and model-predictive tuning.</p>
+            <div class="meta-grid">
+              <div class="meta-item"><span>Capability</span><span>Compensation for maritime and terrestrial vibration</span></div>
+              <div class="meta-item"><span>Support</span><span>X/S/Ka-band tracking</span></div>
+              <div class="meta-item"><span>Offer</span><span>Algorithm licensing + tuning service</span></div>
+            </div>
+          </article>
+
+          <article class="provider-card">
+            <span class="kicker">TP-02</span>
+            <h3>RF Front-End Design Studio</h3>
+            <p>Specialists in LNA, BUC, filters, and waveguide design with strong simulation and tuning know-how.</p>
+            <div class="meta-grid">
+              <div class="meta-item"><span>Strength</span><span>Custom X/S-band filter design</span></div>
+              <div class="meta-item"><span>Support</span><span>Link budget and RF chain optimization</span></div>
+              <div class="meta-item"><span>Delivery</span><span>Transferred via OEM manufacturing partners</span></div>
+            </div>
+          </article>
+
+          <article class="provider-card">
+            <span class="kicker">TP-03</span>
+            <h3>Ground System Integration Group</h3>
+            <p>System integration experts connecting RF and antenna subsystems with baseband, monitoring, and control equipment.</p>
+            <div class="meta-grid">
+              <div class="meta-item"><span>Integration</span><span>With existing baseband equipment</span></div>
+              <div class="meta-item"><span>Deployment</span><span>M&amp;C system setup and tuning</span></div>
+              <div class="meta-item"><span>Migration</span><span>Mixed SAT / LEO ground systems</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="oem">
+      <div class="container">
+        <div class="split-head">
+          <div>
+            <div class="eyebrow">OEM Manufacturing Partners</div>
+            <h2>Manufacturing capacity connected to the right technology</h2>
+            <p class="body-large">OEM partners produce antennas, RF modules, filters, structures, and system-level assemblies based on matched project requirements.</p>
+          </div>
+          <a class="btn secondary" href="#project">Join as an OEM partner</a>
+        </div>
+
+        <div class="cards-3">
+          <article class="provider-card">
+            <span class="kicker">MP-01</span>
+            <h3>Precision Antenna Fabrication</h3>
+            <p>A manufacturing partner capable of producing 1–4 m class reflectors, structures, and drive assemblies.</p>
+            <div class="meta-grid">
+              <div class="meta-item"><span>Facilities</span><span>CNC / milling / welding equipment</span></div>
+              <div class="meta-item"><span>Option</span><span>Corrosion protection for maritime use</span></div>
+              <div class="meta-item"><span>Scope</span><span>Motor / encoder assembly and testing</span></div>
+            </div>
+          </article>
+
+          <article class="provider-card">
+            <span class="kicker">MP-02</span>
+            <h3>RF Module OEM Line</h3>
+            <p>Factory specialized in volume production of LNAs, BUCs, amplifiers, and filters with custom environmental validation.</p>
+            <div class="meta-grid">
+              <div class="meta-item"><span>Equipment</span><span>SMT and RF test equipment</span></div>
+              <div class="meta-item"><span>Quality</span><span>Up to CE / MIL-STD validation levels</span></div>
+              <div class="meta-item"><span>Scale</span><span>Small custom runs to mass production</span></div>
+            </div>
+          </article>
+
+          <article class="provider-card">
+            <span class="kicker">MP-03</span>
+            <h3>Cabinet &amp; System Assembly</h3>
+            <p>Partner for rack and cabinet-level assembly and wiring for RF, baseband, and power subsystems.</p>
+            <div class="meta-grid">
+              <div class="meta-item"><span>Assembly</span><span>19-inch rack integration</span></div>
+              <div class="meta-item"><span>Support</span><span>Cabling, labeling, and FAT</span></div>
+              <div class="meta-item"><span>Branding</span><span>OEM labeling to customer specifications</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="how">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">How It Works</div>
+            <h2>Need → Solution → Match → OEM delivery</h2>
+            <p class="body-large">Antenna Link completes LEO ground-station projects in a clear four-step flow.</p>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- Why Antenna Link -->
-  <section id="why" class="border-t border-slate-200 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
-      <div class="max-w-3xl">
-        <h2 class="text-2xl md:text-3xl font-bold text-slate-900">Why Antenna Link</h2>
-        <p class="mt-3 text-slate-600 text-sm md:text-base">
-          We’re not a product catalog. We’re an <strong class="font-semibold">OEM deal-maker that completes projects</strong>.
-          We bring LEO ground-station customers, technology teams lacking production or sales capacity, and OEM manufacturers
-          to one table—and connect them into a single, deliverable solution.
-        </p>
-      </div>
-      <div class="mt-8 grid md:grid-cols-3 gap-5">
-        <article class="bg-slate-50 rounded-2xl border border-slate-200 p-5">
-          <h3 class="text-sm font-semibold text-slate-900 mb-1.5">01 · LEO Ground-Station Specialized Marketplace</h3>
-          <p class="text-xs md:text-sm text-slate-600">
-            We go deep—not broad. Focused on LEO and weather-satellite ground stations, we assemble all required blocks
-            (RF front-end, antennas, tracking, modems, filters, etc.) into an OEM-ready total solution.
-          </p>
-        </article>
-        <article class="bg-slate-50 rounded-2xl border border-slate-200 p-5">
-          <h3 class="text-sm font-semibold text-slate-900 mb-1.5">02 · Technology Teams Without Products Can Join</h3>
-          <p class="text-xs md:text-sm text-slate-600">
-            Even without an off-the-shelf product, teams with world-class algorithms, RF designs, or tracking technologies
-            can deliver solutions through Antenna Link to third-party projects.
-          </p>
-        </article>
-        <article class="bg-slate-50 rounded-2xl border border-slate-200 p-5">
-          <h3 class="text-sm font-semibold text-slate-900 mb-1.5">03 · OEM/ODM Total Solution Delivery</h3>
-          <p class="text-xs md:text-sm text-slate-600">
-            Customers can order a complete system. Antenna Link matches technology, components, and manufacturers into an
-            OEM/ODM delivery—optionally including local engineering and support.
-          </p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- Solutions Marketplace -->
-  <section id="marketplace" class="border-t border-slate-200 bg-slate-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
-      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
-        <div>
-          <h2 class="text-2xl md:text-3xl font-bold text-slate-900">Solutions Marketplace</h2>
-          <p class="mt-2 text-slate-600 text-sm md:text-base">
-            Not a list of standalone products—this marketplace is organized by
-            <strong class="font-semibold">project-ready LEO ground-station solutions</strong>.
-          </p>
-        </div>
-        <button class="self-start md:self-end px-4 py-2 rounded-2xl border border-slate-300 text-xs md:text-sm font-semibold text-slate-800 hover:bg-white">
-          Inquire about listing a solution →
-        </button>
-      </div>
-
-      <div class="mt-8 grid md:grid-cols-3 gap-6">
-        <!-- Card 1 -->
-        <article class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5 flex flex-col">
-          <h3 class="text-sm font-semibold text-slate-900">Turn-key LEO TTC Ground Station Solution</h3>
-          <p class="mt-2 text-xs md:text-sm text-slate-600">
-            An integrated TTC ground-station package including a ~3 m tracking antenna, X/S-band RF chain, modem, M&C,
-            and dehydrator. Tracking/RF tech by Company A, manufacturing by Company B, integration by Company C.
-          </p>
-          <dl class="mt-4 space-y-2 text-xs text-slate-600">
-            <div class="flex justify-between gap-2">
-              <dt class="w-24 shrink-0 text-slate-500">Band</dt>
-              <dd class="font-medium text-slate-800">X / S Band</dd>
-            </div>
-            <div class="flex justify-between gap-2">
-              <dt class="w-24 shrink-0 text-slate-500">Scope</dt>
-              <dd class="font-medium text-slate-800">TTC / EO / LEO, designed for 5–10 year lifecycle</dd>
-            </div>
-            <div class="flex justify-between gap-2">
-              <dt class="w-24 shrink-0 text-slate-500">Delivery</dt>
-              <dd class="font-medium text-slate-800">OEM turn-key supply</dd>
-            </div>
-          </dl>
-          <button class="mt-4 px-3 py-2 rounded-xl bg-slate-900 text-white text-xs font-semibold hover:bg-black">
-            Request a quote based on this solution →
-          </button>
-        </article>
-
-        <!-- Card 2 -->
-        <article class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5 flex flex-col">
-          <h3 class="text-sm font-semibold text-slate-900">Maritime LEO Auto-Tracking Antenna Subsystem</h3>
-          <p class="mt-2 text-xs md:text-sm text-slate-600">
-            A 1–2.4 m maritime auto-tracking antenna system designed for wave and vibration environments.
-            Mechanical structure by a local OEM; tracking algorithms provided by a specialized technology team.
-          </p>
-          <dl class="mt-4 space-y-2 text-xs text-slate-600">
-            <div class="flex justify-between gap-2">
-              <dt class="w-24 shrink-0 text-slate-500">Environment</dt>
-              <dd class="font-medium text-slate-800">Maritime / vessels / offshore platforms</dd>
-            </div>
-            <div class="flex justify-between gap-2">
-              <dt class="w-24 shrink-0 text-slate-500">Tech</dt>
-              <dd class="font-medium text-slate-800">Monopulse tracking, DSP-based control</dd>
-            </div>
-            <div class="flex justify-between gap-2">
-              <dt class="w-24 shrink-0 text-slate-500">Offering</dt>
-              <dd class="font-medium text-slate-800">OEM subsystem + algorithm licensing</dd>
-            </div>
-          </dl>
-          <button class="mt-4 px-3 py-2 rounded-xl bg-slate-900 text-white text-xs font-semibold hover:bg-black">
-            Request matching for a similar project →
-          </button>
-        </article>
-
-        <!-- Card 3 -->
-        <article class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5 flex flex-col">
-          <h3 class="text-sm font-semibold text-slate-900">X/S-band RF Front-End OEM Package</h3>
-          <p class="mt-2 text-xs md:text-sm text-slate-600">
-            A full RF front-end package including LNA, BUC, filters, line amps, waveguides, and feeders—combining COTS
-            modules with custom filter design as needed.
-          </p>
-          <dl class="mt-4 space-y-2 text-xs text-slate-600">
-            <div class="flex justify-between gap-2">
-              <dt class="w-24 shrink-0 text-slate-500">Includes</dt>
-              <dd class="font-medium text-slate-800">LNA / BUC / filters / amps / switches</dd>
-            </div>
-            <div class="flex justify-between gap-2">
-              <dt class="w-24 shrink-0 text-slate-500">Options</dt>
-              <dd class="font-medium text-slate-800">Custom filter design by temperature/environment</dd>
-            </div>
-            <div class="flex justify-between gap-2">
-              <dt class="w-24 shrink-0 text-slate-500">Delivery</dt>
-              <dd class="font-medium text-slate-800">OEM modules + integration testing</dd>
-            </div>
-          </dl>
-          <button class="mt-4 px-3 py-2 rounded-xl bg-slate-900 text-white text-xs font-semibold hover:bg-black">
-            Consult on RF chain configuration →
-          </button>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- Technology Providers -->
-  <section id="providers" class="border-t border-slate-200 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
-      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
-        <div>
-          <h2 class="text-2xl md:text-3xl font-bold text-slate-900">Technology Providers</h2>
-          <p class="mt-2 text-slate-600 text-sm md:text-base">
-            Teams with world-class <strong class="font-semibold">algorithms, RF design, and tracking technologies</strong>
-            can participate in third-party projects via Antenna Link—even without a finished product.
-          </p>
-        </div>
-        <button class="self-start md:self-end px-4 py-2 rounded-2xl border border-slate-300 text-xs md:text-sm font-semibold text-slate-800 hover:bg-slate-50">
-          Join as a technology provider →
-        </button>
-      </div>
-
-      <div class="mt-8 grid md:grid-cols-3 gap-6 text-xs md:text-sm">
-        <article class="bg-slate-50 rounded-2xl border border-slate-200 p-5">
-          <h3 class="font-semibold text-slate-900 mb-1.5">TP-01 · LEO Tracking Algorithm Lab</h3>
-          <p class="text-slate-600">
-            Tracking algorithms for LEO/ground stations using Kalman filtering, monopulse, and model predictive control.
-          </p>
-          <ul class="mt-3 space-y-1 text-slate-600">
-            <li>• Compensation for maritime/terrestrial vibration environments</li>
-            <li>• Supports X/S/Ka-band tracking</li>
-            <li>• Algorithm licensing + tuning services</li>
-          </ul>
-        </article>
-        <article class="bg-slate-50 rounded-2xl border border-slate-200 p-5">
-          <h3 class="font-semibold text-slate-900 mb-1.5">TP-02 · RF Front-End Design Studio</h3>
-          <p class="text-slate-600">
-            Specialists in LNA, BUC, filters, and waveguide design. No production line—focused on design, simulation, and tuning.
-          </p>
-          <ul class="mt-3 space-y-1 text-slate-600">
-            <li>• Custom filter design for X/S-band</li>
-            <li>• Link budget and RF chain optimization</li>
-            <li>• Delivered via OEM manufacturing partners</li>
-          </ul>
-        </article>
-        <article class="bg-slate-50 rounded-2xl border border-slate-200 p-5">
-          <h3 class="font-semibold text-slate-900 mb-1.5">TP-03 · Ground System Integration Group</h3>
-          <p class="text-slate-600">
-            System integration experts connecting RF/antenna subsystems with existing ground infrastructure.
-          </p>
-          <ul class="mt-3 space-y-1 text-slate-600">
-            <li>• Integration with existing baseband equipment</li>
-            <li>• Monitoring & control (M&C) system deployment</li>
-            <li>• Migration for mixed SAT/LEO ground systems</li>
-          </ul>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- Manufacturing Partners -->
-  <section id="manufacturers" class="border-t border-slate-200 bg-slate-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
-      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
-        <div>
-          <h2 class="text-2xl md:text-3xl font-bold text-slate-900">OEM Manufacturing Partners</h2>
-          <p class="mt-2 text-slate-600 text-sm md:text-base">
-            Manufacturing partners connect with global technology providers through Antenna Link to produce ground-station
-            antennas, RF modules, filters, and structures in OEM form.
-          </p>
-        </div>
-        <button class="self-start md:self-end px-4 py-2 rounded-2xl border border-slate-300 text-xs md:text-sm font-semibold text-slate-800 hover:bg-white">
-          Join as an OEM partner →
-        </button>
-      </div>
-
-      <div class="mt-8 grid md:grid-cols-3 gap-6 text-xs md:text-sm">
-        <article class="bg-white rounded-2xl border border-slate-200 p-5">
-          <h3 class="font-semibold text-slate-900 mb-1.5">MP-01 · Precision Antenna Fabrication</h3>
-          <p class="text-slate-600">
-            A manufacturing partner capable of producing 1–4 m class reflectors, structures, and drive assemblies.
-          </p>
-          <ul class="mt-3 space-y-1 text-slate-600">
-            <li>• CNC/milling/welding equipment</li>
-            <li>• Corrosion protection options for maritime use</li>
-            <li>• Motor/encoder assembly and testing</li>
-          </ul>
-        </article>
-        <article class="bg-white rounded-2xl border border-slate-200 p-5">
-          <h3 class="font-semibold text-slate-900 mb-1.5">MP-02 · RF Module OEM Line</h3>
-          <p class="text-slate-600">
-            Factory specialized in volume production of RF modules such as LNAs, BUCs, amplifiers, and filters.
-          </p>
-          <ul class="mt-3 space-y-1 text-slate-600">
-            <li>• SMT and RF test equipment</li>
-            <li>• Environmental testing up to CE / MIL-STD levels</li>
-            <li>• From small custom runs to scaled production</li>
-          </ul>
-        </article>
-        <article class="bg-white rounded-2xl border border-slate-200 p-5">
-          <h3 class="font-semibold text-slate-900 mb-1.5">MP-03 · Cabinet & System Assembly</h3>
-          <p class="text-slate-600">
-            Partner for rack/cabinet-level assembly and wiring for RF, baseband, and PSU subsystems.
-          </p>
-          <ul class="mt-3 space-y-1 text-slate-600">
-            <li>• 19&quot; rack integration</li>
-            <li>• Cabling/labeling/FAT support</li>
-            <li>• OEM branding to customer specifications</li>
-          </ul>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- How It Works -->
-  <section id="workflow" class="border-t border-slate-200 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
-      <div class="max-w-3xl">
-        <h2 class="text-2xl md:text-3xl font-bold text-slate-900">How It Works</h2>
-        <p class="mt-2 text-slate-600 text-sm md:text-base">
-          Antenna Link completes LEO ground-station projects through the steps:
-          <strong class="font-semibold">Need → Solution → Match → OEM</strong>.
-        </p>
-      </div>
-
-      <div class="mt-8 grid md:grid-cols-4 gap-5 text-xs md:text-sm">
-        <div class="bg-slate-50 rounded-2xl border border-slate-200 p-5">
-          <div class="inline-flex items-center justify-center h-7 w-7 rounded-lg bg-blue-600 text-white text-xs font-bold mb-3">1</div>
-          <h3 class="font-semibold text-slate-900 mb-1.5">Submit project needs</h3>
-          <p class="text-slate-600">
-            Share key requirements such as orbit, band, antenna size, environment, schedule, and budget range.
-          </p>
-        </div>
-        <div class="bg-slate-50 rounded-2xl border border-slate-200 p-5">
-          <div class="inline-flex items-center justify-center h-7 w-7 rounded-lg bg-blue-600 text-white text-xs font-bold mb-3">2</div>
-          <h3 class="font-semibold text-slate-900 mb-1.5">Solution architecture</h3>
-          <p class="text-slate-600">
-            We design a solution package across antennas, RF chains, modems, and subsystems.
-          </p>
-        </div>
-        <div class="bg-slate-50 rounded-2xl border border-slate-200 p-5">
-          <div class="inline-flex items-center justify-center h-7 w-7 rounded-lg bg-blue-600 text-white text-xs font-bold mb-3">3</div>
-          <h3 class="font-semibold text-slate-900 mb-1.5">Match partners</h3>
-          <p class="text-slate-600">
-            We assemble a project team by matching technology providers, OEM manufacturers, and integration partners.
-          </p>
-        </div>
-        <div class="bg-slate-50 rounded-2xl border border-slate-200 p-5">
-          <div class="inline-flex items-center justify-center h-7 w-7 rounded-lg bg-blue-600 text-white text-xs font-bold mb-3">4</div>
-          <h3 class="font-semibold text-slate-900 mb-1.5">OEM total delivery</h3>
-          <p class="text-slate-600">
-            Customers receive a completed OEM solution—optionally with local support and after-sales service coordination.
-          </p>
+        <div class="steps">
+          <article class="step-card">
+            <div class="step-no">1</div>
+            <h3>Submit project needs</h3>
+            <p>Share key requirements such as orbit, band, antenna size, environment, schedule, and budget range.</p>
+          </article>
+          <article class="step-card">
+            <div class="step-no">2</div>
+            <h3>Solution architecture</h3>
+            <p>We shape a package across antennas, RF chains, control, monitoring, and supporting subsystems.</p>
+          </article>
+          <article class="step-card">
+            <div class="step-no">3</div>
+            <h3>Match partners</h3>
+            <p>The right technology providers, OEM manufacturers, and integration resources are assembled for delivery.</p>
+          </article>
+          <article class="step-card">
+            <div class="step-no">4</div>
+            <h3>OEM total delivery</h3>
+            <p>Customers receive a completed OEM-ready solution with optional local support and after-sales coordination.</p>
+          </article>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Match Form -->
-  <section id="match" class="border-t border-slate-200 bg-slate-900 text-slate-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
-      <div class="grid lg:grid-cols-2 gap-10 items-start">
-        <div>
-          <h2 class="text-2xl md:text-3xl font-bold">Project Match / OEM Total Solution</h2>
-          <p class="mt-3 text-sm md:text-base text-slate-200">
-            Share the details below and Antenna Link will match you with qualified technology providers and OEM manufacturing partners
-            to propose a <strong class="font-semibold">LEO ground-station OEM total solution</strong>.
-          </p>
-          <ul class="mt-6 space-y-2 text-xs md:text-sm text-slate-200">
-            <li>• Support for LEO / weather satellites / maritime ground stations / testbeds and more</li>
-            <li>• Detailed technical documents and partner profiles can be shared after NDA</li>
-            <li>• Hybrid configurations with global vendors are always considered</li>
-          </ul>
-        </div>
-
-        <form class="bg-slate-950/40 border border-slate-700 rounded-2xl p-5 md:p-6 space-y-4 text-xs md:text-sm">
-          <div class="grid md:grid-cols-2 gap-3">
-            <input type="text" required placeholder="Company / Organization"
-              class="px-3 py-2.5 rounded-xl border border-slate-700 bg-slate-900 text-slate-50 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-            <input type="email" required placeholder="Email"
-              class="px-3 py-2.5 rounded-xl border border-slate-700 bg-slate-900 text-slate-50 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+    <section class="section dark-section" id="project">
+      <div class="container project-grid">
+        <div class="form-copy">
+          <div class="eyebrow" style="background: rgba(255,255,255,.06); border-color: rgba(150,174,231,.2); color: #dfe8ff;">Project Match / OEM Total Solution</div>
+          <h2>Share your project and get matched with qualified partners</h2>
+          <p class="body-large" style="margin-top: 18px;">Describe your target application and missing areas. Antenna Link will propose a suitable combination of providers, OEM manufacturers, and integration support.</p>
+          <div style="margin-top: 26px; display: grid; gap: 10px;" class="mini">
+            <p>• Support for LEO / weather satellites / maritime ground stations / testbeds and more</p>
+            <p>• Detailed technical documents and partner profiles can be shared after NDA</p>
+            <p>• Hybrid configurations with global vendors can be considered</p>
           </div>
-          <div class="grid md:grid-cols-2 gap-3">
-            <select
-              class="px-3 py-2.5 rounded-xl border border-slate-700 bg-slate-900 text-slate-50 focus:outline-none focus:ring-2 focus:ring-blue-500">
+        </div>
+
+        <form class="project-form" action="#" method="post">
+          <div class="form-grid">
+            <input class="field" type="text" name="company" placeholder="Company / Organization" />
+            <input class="field" type="email" name="email" placeholder="Email" />
+            <select class="field" name="project_type">
               <option value="">Select project type</option>
-              <option>LEO TTC Ground Station</option>
-              <option>Weather Satellite Reception Station</option>
-              <option>Maritime LEO Ground Station</option>
-              <option>Testbed / Lab Setup</option>
-              <option>Existing Station Upgrade</option>
+              <option>LEO Ground Station</option>
+              <option>RF Front-End</option>
+              <option>Auto-Tracking Subsystem</option>
+              <option>OEM Manufacturing</option>
             </select>
-            <select
-              class="px-3 py-2.5 rounded-xl border border-slate-700 bg-slate-900 text-slate-50 focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <select class="field" name="primary_band">
               <option value="">Primary band</option>
               <option>X Band</option>
               <option>S Band</option>
               <option>Ka Band</option>
               <option>Multi-band</option>
             </select>
-          </div>
-          <div class="grid md:grid-cols-2 gap-3">
-            <input type="text" placeholder="Antenna size (e.g., 2.4 m, 3.7 m)"
-              class="px-3 py-2.5 rounded-xl border border-slate-700 bg-slate-900 text-slate-50 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-            <select
-              class="px-3 py-2.5 rounded-xl border border-slate-700 bg-slate-900 text-slate-50 focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <input class="field" type="text" name="antenna_size" placeholder="Antenna size (e.g. 2.4 m, 3.7 m)" />
+            <select class="field" name="installation_environment">
               <option value="">Installation environment</option>
-              <option>On land (fixed)</option>
-              <option>Maritime (vessel/platform)</option>
-              <option>Arctic / desert / extreme conditions</option>
-              <option>Indoor test / lab</option>
+              <option>Fixed site</option>
+              <option>Maritime</option>
+              <option>Vehicle / Mobile</option>
+              <option>Testbed</option>
             </select>
+            <input class="field" type="text" name="timeline" placeholder="Expected timeline (e.g. delivery in H1)" />
+            <input class="field" type="text" name="quantity" placeholder="Estimated quantity / number of sites" />
+            <textarea name="details" placeholder="Missing areas / expected roles (e.g. RF front-end design + OEM manufacturing, auto-tracking subsystem, integration with existing baseband, etc.)"></textarea>
           </div>
-          <div class="grid md:grid-cols-2 gap-3">
-            <input type="text" placeholder="Expected timeline (e.g., delivery in H1 2026)"
-              class="px-3 py-2.5 rounded-xl border border-slate-700 bg-slate-900 text-slate-50 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-            <input type="text" placeholder="Estimated quantity / number of sites"
-              class="px-3 py-2.5 rounded-xl border border-slate-700 bg-slate-900 text-slate-50 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-          </div>
-          <textarea rows="4" placeholder="Missing areas / expected roles (e.g., RF front-end design + OEM manufacturing, auto-tracking subsystem, integration with existing baseband, etc.)"
-            class="w-full px-3 py-2.5 rounded-xl border border-slate-700 bg-slate-900 text-slate-50 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
-          <div class="flex items-start gap-2">
-            <input id="nda" type="checkbox" class="mt-1 rounded border-slate-600 bg-slate-900 text-blue-500 focus:ring-blue-500" />
-            <label for="nda" class="text-[11px] md:text-xs text-slate-300">
-              I would like to receive detailed technical information and partner profiles after signing an NDA.
-            </label>
-          </div>
-          <button type="button" id="matchSubmit"
-            class="w-full mt-2 px-4 py-2.5 rounded-2xl bg-blue-500 text-white text-sm font-semibold hover:bg-blue-600">
-            Send Project Matching Request
-          </button>
-          <p class="text-[11px] text-slate-400 mt-1">
-            The information you submit will be used only for partner matching and proposal preparation and will not be shared with third parties without consent.
-          </p>
+
+          <label class="form-check">
+            <input type="checkbox" name="nda" />
+            <span>I would like to receive detailed technical information and partner profiles after signing an NDA.</span>
+          </label>
+
+          <button class="btn primary" type="submit" style="width: 100%;">Send Project Matching Request</button>
+          <p class="mini" style="margin-top: 16px;">The information you submit will be used only for partner matching and proposal preparation and will not be shared with third parties without consent.</p>
         </form>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Resources -->
-  <section id="resources" class="border-t border-slate-200 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
-      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
-        <div>
-          <h2 class="text-2xl md:text-3xl font-bold text-slate-900">Resources</h2>
-          <p class="mt-2 text-slate-600 text-sm md:text-base">
-            Reference materials for LEO ground-station design and OEM collaboration.
-            Leave your email to receive the latest updates.
-          </p>
+    <section class="section dark-section" id="resources" style="padding-top: 72px;">
+      <div class="container">
+        <div class="split-head">
+          <div>
+            <div class="eyebrow" style="background: rgba(255,255,255,.06); border-color: rgba(150,174,231,.2); color: #dfe8ff;">Resources</div>
+            <h2>Reference materials for project planning</h2>
+            <p class="body-large">Leave your email to receive the latest resource updates and selected documents.</p>
+          </div>
+          <form class="subscribe" action="#" method="post">
+            <input type="email" name="subscribe_email" placeholder="Email address" />
+            <button class="btn dark" type="submit">Get Resource Updates</button>
+          </form>
         </div>
-        <form class="flex flex-col sm:flex-row gap-2 text-xs md:text-sm">
-          <input type="email" required placeholder="Email address"
-            class="px-3 py-2.5 rounded-2xl border border-slate-300 bg-white text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-600" />
-          <button class="px-4 py-2.5 rounded-2xl bg-slate-900 text-white font-semibold hover:bg-black">
-            Get Resource Updates
-          </button>
-        </form>
-      </div>
 
-      <div class="mt-8 grid md:grid-cols-3 gap-6 text-xs md:text-sm">
-        <article class="bg-slate-50 rounded-2xl border border-slate-200 p-5">
-          <h3 class="font-semibold text-slate-900">LEO Ground Station RF Chain Reference</h3>
-          <p class="mt-1 text-slate-600">
-            OEM considerations and typical RF chain configuration from LNA → filter → BUC → PA → dehydrator → modem.
-          </p>
-          <p class="mt-3 text-[11px] text-slate-500">PDF · Available upon request via email</p>
-        </article>
-        <article class="bg-slate-50 rounded-2xl border border-slate-200 p-5">
-          <h3 class="font-semibold text-slate-900">Maritime Auto-Tracking Antenna Design Checklist</h3>
-          <p class="mt-1 text-slate-600">
-            Vibration/pitch/roll environment, mechanical design, sensor selection, and algorithm/OEM separation strategy.
-          </p>
-          <p class="mt-3 text-[11px] text-slate-500">Whitepaper · Partner-only</p>
-        </article>
-        <article class="bg-slate-50 rounded-2xl border border-slate-200 p-5">
-          <h3 class="font-semibold text-slate-900">OEM Collaboration Structure & Contract Framework</h3>
-          <p class="mt-1 text-slate-600">
-            A standard framework defining roles and collaboration between technology providers, manufacturers, and integrators.
-          </p>
-          <p class="mt-3 text-[11px] text-slate-500">Template · Antenna Link standard</p>
-        </article>
-      </div>
-    </div>
-  </section>
+        <div class="resources-grid">
+          <article class="resource-card">
+            <span class="kicker">PDF</span>
+            <h3>LEO Ground Station RF Chain Reference</h3>
+            <p>OEM considerations and a typical RF chain configuration from LNA → filter → BUC → PA → dehydrator → modem.</p>
+          </article>
 
-  <!-- Footer -->
-  <footer class="border-t border-slate-200 bg-slate-900 text-slate-300">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-7 text-xs md:text-sm flex flex-col md:flex-row md:items-center md:justify-between gap-3">
-      <div>
-        <p class="font-semibold text-slate-100">Antenna Link · LEO Ground Station OEM Total Solution Marketplace</p>
-        <p class="mt-1 text-slate-400">© 2025 Antenna Link. All rights reserved.</p>
-      </div>
-      <div class="space-y-1 text-slate-400">
-        <p>
-          Contact:
-          <a href="mailto:sales@antennalink.com" class="underline underline-offset-2">sales@antennalink.com</a>
-        </p>
-      
-        <div class="pt-1">
-          <p class="text-slate-400">
-            990 Blue Mound E, Haslet, Texas 76052, USA
-          </p>
-          <p class="text-slate-400">
-            T.
-            <a href="tel:+12145139109" class="underline underline-offset-2">+1 (214) 513-9109</a>
-          </p>
+          <article class="resource-card">
+            <span class="kicker">Whitepaper</span>
+            <h3>Maritime Auto-Tracking Design Checklist</h3>
+            <p>Vibration and pitch/roll environment, mechanical design, sensor selection, and algorithm/OEM separation strategy.</p>
+          </article>
+
+          <article class="resource-card">
+            <span class="kicker">Template</span>
+            <h3>OEM Collaboration Structure &amp; Contract Framework</h3>
+            <p>A standard framework defining roles and collaboration between technology providers, manufacturers, and integrators.</p>
+          </article>
         </div>
-      
-        <div class="pt-1">
-          <p class="text-slate-400">
-            4685 Convoy St. #160, San Diego, CA 92111, USA
-          </p>
-          <p class="text-slate-400">
-            T.
-            <a href="tel:+16193164182" class="underline underline-offset-2">+1 (619) 316-4182</a>
-          </p>
-        </div>
-		
-        <p class="text-[11px] text-slate-400">
-          Partner participation, technology listings, and OEM proposals are available via email or the Project Match form.
-        </p>
-      </div>
-    </div>
-  </footer>
 
-  <!-- Match Modal -->
-  <div id="matchModal" class="fixed inset-0 hidden items-center justify-center bg-black/50 p-4">
-    <div class="bg-white rounded-2xl shadow-xl max-w-md w-full p-6">
-      <div class="flex items-center justify-between">
-        <h3 class="text-lg font-bold text-slate-900">Project Match Request Received</h3>
-        <button id="closeMatchModal" class="p-2 rounded-lg hover:bg-slate-100" aria-label="close">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-            <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
-          </svg>
-        </button>
+        <footer class="footer">
+          <div>
+            <h4>Antenna Link · LEO Ground Station OEM Total Solution Marketplace</h4>
+            <p>© 2025 Antenna Link. All rights reserved.</p>
+          </div>
+          <div>
+            <p>Contact: sales@antennalink.com</p>
+            <p>990 Blue Mound E, Haslet, Texas 76052, USA</p>
+            <p>4685 Convoy St #160, San Diego, CA 92111, USA</p>
+            <p>Partner participation, technology listings, and OEM proposals are available via email or the Project Match form.</p>
+          </div>
+        </footer>
       </div>
-      <p class="mt-3 text-sm text-slate-600">
-        Thank you for your request. The Antenna Link team will review your requirements and contact you after selecting
-        suitable technology partners and OEM manufacturers.
-      </p>
-      <div class="mt-6 flex justify-end gap-2">
-        <button id="okMatchModal" class="px-4 py-2 rounded-xl bg-blue-600 text-white text-sm font-semibold hover:bg-blue-700">
-          OK
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Image Modal (ALD-200) -->
-  <div id="imageModal" class="fixed inset-0 hidden items-center justify-center bg-black/70 p-4 z-[60]">
-    <div class="relative w-full max-w-3xl">
-      <button
-        id="closeImageModal"
-        class="absolute -top-10 right-0 px-3 py-2 rounded-xl bg-white/90 hover:bg-white text-slate-900 text-sm font-semibold"
-        aria-label="Close image"
-      >
-        Close ✕
-      </button>
-  
-      <div class="bg-white rounded-2xl shadow-2xl overflow-hidden">
-        <!-- 원본 비율 그대로 크게 보여주기 -->
-        <img
-          id="imageModalImg"
-          src="images/ALD_200.jpg"
-          alt="ALD-200 Dehydrator (original)"
-          class="w-full h-auto"
-        />
-      </div>
-  
-      <p class="mt-3 text-center text-xs text-white/80">
-        Click outside the image or press ESC to close
-      </p>
-    </div>
-  </div>
+    </section>
+  </main>
 
   <script>
-    // mobile menu toggle
-    const mobileBtn = document.getElementById('mobileBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-    mobileBtn?.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-    });
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileNav = document.getElementById('mobileNav');
 
-    // smooth anchor scroll
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-      a.addEventListener('click', (e) => {
-        const href = a.getAttribute('href');
-        if (href && href.length > 1) {
-          e.preventDefault();
-          document.querySelector(href)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          mobileMenu?.classList.add('hidden');
-        }
+    if (menuBtn && mobileNav) {
+      menuBtn.addEventListener('click', () => {
+        const opened = mobileNav.classList.toggle('open');
+        menuBtn.setAttribute('aria-expanded', String(opened));
       });
-    });
 
-    // Match modal
-    const matchModal = document.getElementById('matchModal');
-    const matchSubmit = document.getElementById('matchSubmit');
-    const closeMatchModal = document.getElementById('closeMatchModal');
-    const okMatchModal = document.getElementById('okMatchModal');
-
-    function openMatchModal() {
-      matchModal.classList.remove('hidden');
-      matchModal.classList.add('flex');
+      mobileNav.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => {
+          mobileNav.classList.remove('open');
+          menuBtn.setAttribute('aria-expanded', 'false');
+        });
+      });
     }
-    function closeModal() {
-      matchModal.classList.add('hidden');
-      matchModal.classList.remove('flex');
-    }
-
-    matchSubmit?.addEventListener('click', openMatchModal);
-    closeMatchModal?.addEventListener('click', closeModal);
-    okMatchModal?.addEventListener('click', closeModal);
-	
-    // Image modal (ALD-200)
-    const aldThumb = document.getElementById('aldThumb');
-    const imageModal = document.getElementById('imageModal');
-    const closeImageModal = document.getElementById('closeImageModal');
-    
-    function openImageModal() {
-      imageModal.classList.remove('hidden');
-      imageModal.classList.add('flex');
-    }
-    function closeImgModal() {
-      imageModal.classList.add('hidden');
-      imageModal.classList.remove('flex');
-    }
-    
-    aldThumb?.addEventListener('click', openImageModal);
-    closeImageModal?.addEventListener('click', closeImgModal);
-    
-    // click outside to close
-    imageModal?.addEventListener('click', (e) => {
-      if (e.target === imageModal) closeImgModal();
-    });
-    
-    // ESC to close
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && !imageModal.classList.contains('hidden')) {
-        closeImgModal();
-      }
-    });
   </script>
 </body>
 </html>
