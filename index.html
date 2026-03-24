@@ -87,60 +87,47 @@
 </section>
 
 
-  <!-- Header -->
-  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-slate-200">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-16">
-        <a href="#" class="flex items-center gap-3">
-          <img
-            src="images/antenna_link_small.gif"
-            alt="Antenna Link"
-            class="h-8 md:h-9 w-auto"
-            loading="eager"
-            decoding="async"
-          />
+<header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-slate-200">
 
-  
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
 
+    <!-- 1줄: 로고 + 로그인 -->
+    <div class="flex items-center justify-between">
 
-          <!-- 로고만 쓰고 싶으면 아래 텍스트 줄은 삭제해도 됩니다 -->
-          <span class="sr-only">Antenna Link</span>
+      <!-- 로고 크게 -->
+      <a href="#" class="flex items-center gap-3">
+        <img
+          src="images/Antenna Link_R.png"
+          alt="Antenna Link"
+          class="h-12 md:h-14 w-auto"
+        />
+      </a>
+
+      <!-- 로그인 -->
+      <div class="hidden md:flex items-center">
+        <a href="#match" class="text-sm font-semibold text-slate-700 hover:text-blue-700">
+          Login / Sign up
         </a>
-        <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
-          <a href="#why" class="hover:text-blue-700">Why Antenna Link</a>
-          <a href="#marketplace" class="hover:text-blue-700">Solutions Marketplace</a>
-          <a href="#providers" class="hover:text-blue-700">Technology Providers</a>
-          <a href="#manufacturers" class="hover:text-blue-700">OEM Partners</a>
-          <a href="#workflow" class="hover:text-blue-700">How It Works</a>
-          <a href="#match" class="hover:text-blue-700">Project Match</a>
-          <a href="#resources" class="hover:text-blue-700">Resources</a>
-        </nav>
-        <div class="hidden md:flex items-center gap-3">
-          <a href="#match" class="text-sm font-semibold text-slate-700 hover:text-blue-700">Login / Sign up</a>
-          <a href="#match" class="px-4 py-2 rounded-2xl bg-blue-600 text-white text-sm font-semibold shadow hover:bg-blue-700">
-            Request a Project
-          </a>
-        </div>
-        <button id="mobileBtn" class="md:hidden p-2 rounded-lg border border-slate-200 hover:bg-slate-100" aria-label="open menu">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-          </svg>
-        </button>
       </div>
+
     </div>
-    <!-- mobile menu -->
-    <div id="mobileMenu" class="md:hidden hidden border-t border-slate-200 bg-white">
-      <div class="max-w-7xl mx-auto px-4 py-3 grid gap-2 text-sm">
-        <a href="#why" class="py-2">Why Antenna Link</a>
-        <a href="#marketplace" class="py-2">Solutions Marketplace</a>
-        <a href="#providers" class="py-2">Technology Providers</a>
-        <a href="#manufacturers" class="py-2">OEM Partners</a>
-        <a href="#workflow" class="py-2">How It Works</a>
-        <a href="#match" class="py-2">Project Match</a>
-        <a href="#resources" class="py-2">Resources</a>
-      </div>
-    </div>
-  </header>
+
+    <!-- 2줄: 메뉴 -->
+    <nav class="hidden md:flex items-center gap-10 text-sm font-medium mt-4">
+
+      <a href="#why" class="hover:text-blue-700">Why Antenna Link</a>
+      <a href="#marketplace" class="hover:text-blue-700">Solutions Marketplace</a>
+      <a href="#providers" class="hover:text-blue-700">Technology Providers</a>
+      <a href="#manufacturers" class="hover:text-blue-700">OEM Partners</a>
+      <a href="#workflow" class="hover:text-blue-700">How It Works</a>
+      <a href="#match" class="hover:text-blue-700">Project Match</a>
+      <a href="#resources" class="hover:text-blue-700">Resources</a>
+
+    </nav>
+
+  </div>
+
+</header>
 
 <!-- Top Product Info Strip (EN) -->
 <section class="border-b border-slate-200 bg-white">
