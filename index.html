@@ -218,73 +218,36 @@
 </section>
 
   <!-- Hero -->
-  <section class="relative overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-br from-slate-50 via-blue-50/70 to-indigo-100 pointer-events-none"></div>
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20">
-      <div class="grid lg:grid-cols-2 gap-10 items-center">
-        <div>
-          <p class="inline-flex px-3 py-1 rounded-full bg-blue-50 border border-blue-100 text-xs font-semibold text-blue-700 mb-4">
-            LEO Ground Station · OEM Total Solution · B2B Marketplace
-          </p>
-          <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight text-slate-900">
-            Build your LEO ground-station solution<br class="hidden md:block" />
-            with <span class="text-blue-700">technology providers, manufacturers, and integrators</span>.
-          </h1>
-          <p class="mt-4 text-base md:text-lg text-slate-600">
-            Antenna Link is a <strong class="font-semibold">specialized brokerage platform for LEO ground stations</strong>
-            that connects tech companies without finished products, OEM partners with manufacturing capacity, and customers
-            who need complete ground-station solutions—all in one place.
-            We fill the missing pieces across antennas, RF modules, tracking, filters, modems, and more to deliver an
-            OEM total solution.
-          </p>
-          <div class="mt-8 flex flex-wrap items-center gap-3">
-            <a href="#match" class="px-6 py-3 rounded-2xl bg-blue-600 text-white text-sm md:text-base font-semibold shadow hover:bg-blue-700">
-              Request Project Matching
-            </a>
-            <a href="#marketplace" class="px-6 py-3 rounded-2xl border border-slate-300 text-sm md:text-base font-semibold text-slate-800 hover:bg-white">
-              View the Marketplace
-            </a>
-          </div>
-          <div class="mt-6 text-xs md:text-sm text-slate-500">
-            LEO · Weather-satellite ground stations / Maritime & terrestrial tracking systems / X·S·Ka-band RF chains / OEM antenna manufacturing
-          </div>
-        </div>
-        <div class="lg:pl-8">
-          <div class="bg-white/80 border border-slate-200 rounded-2xl shadow-lg p-6 md:p-7">
-            <h3 class="text-sm font-semibold text-slate-800 flex items-center gap-2">
-              <span class="inline-flex h-6 w-6 rounded-lg bg-blue-600 text-white items-center justify-center text-xs">1</span>
-              Do you have an active LEO ground-station project?
-            </h3>
-            <p class="mt-2 text-sm text-slate-600">
-              If you summarize requirements like the example below, Antenna Link will match the right technology providers and OEM partners.
-            </p>
-            <dl class="mt-4 space-y-3 text-xs md:text-sm">
-              <div class="flex justify-between gap-4">
-                <dt class="text-slate-500 w-32 shrink-0">Primary band</dt>
-                <dd class="font-medium text-slate-800">X / S Band, LEO Earth Observation</dd>
-              </div>
-              <div class="flex justify-between gap-4">
-                <dt class="text-slate-500 w-32 shrink-0">Antenna</dt>
-                <dd class="font-medium text-slate-800">≤ 3.7 m tracking antenna, auto-tracking required</dd>
-              </div>
-              <div class="flex justify-between gap-4">
-                <dt class="text-slate-500 w-32 shrink-0">What’s missing</dt>
-                <dd class="font-medium text-slate-800">RF front-end design + OEM manufacturing partner</dd>
-              </div>
-              <div class="flex justify-between gap-4">
-                <dt class="text-slate-500 w-32 shrink-0">Desired delivery</dt>
-                <dd class="font-medium text-slate-800">Turn-key OEM supply + local technical support</dd>
-              </div>
-            </dl>
-            <button onclick="document.getElementById('match')?.scrollIntoView({behavior:'smooth'})"
-              class="mt-5 w-full px-4 py-2.5 rounded-2xl bg-slate-900 text-white text-sm font-semibold hover:bg-black">
-              Submit a similar request →
-            </button>
-          </div>
-        </div>
-      </div>
+ <section class="relative h-[500px] md:h-[600px] overflow-hidden">
+
+  <!-- 배경 이미지들 -->
+  <div class="absolute inset-0">
+    <img src="images/ALD-200.png" class="slide absolute w-full h-full object-cover opacity-100 transition-opacity duration-1000">
+    <img src="images/LEO.png" class="slide absolute w-full h-full object-cover opacity-0 transition-opacity duration-1000">
+    <img src="images/VM12L.png" class="slide absolute w-full h-full object-cover opacity-0 transition-opacity duration-1000">
+    
+    <!-- 어두운 오버레이 (글자 가독성) -->
+    <div class="absolute inset-0 bg-black/40"></div>
+  </div>
+
+  <!-- 텍스트 -->
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
+    <div class="max-w-2xl text-white">
+
+      <h1 class="text-3xl md:text-5xl font-extrabold leading-tight">
+        Build your LEO ground-station solution<br>
+        with technology providers, manufacturers,<br>
+        and integrators.
+      </h1>
+
+      <p class="mt-4 text-base md:text-lg text-slate-200">
+        Antenna Link is a specialized OEM solution platform connecting technology and manufacturing.
+      </p>
+
     </div>
-  </section>
+  </div>
+
+</section>
 
   <!-- Why Antenna Link -->
   <section id="why" class="border-t border-slate-200 bg-white">
@@ -857,6 +820,26 @@
         closeImgModal();
       }
     });
+
+  const slides = document.querySelectorAll('.slide');
+  let currentSlide = 0;
+
+  setInterval(() => {
+    // 현재 슬라이드 숨기기
+    slides[currentSlide].classList.remove('opacity-100');
+    slides[currentSlide].classList.add('opacity-0');
+
+    // 다음 슬라이드
+    currentSlide = (currentSlide + 1) % slides.length;
+
+    // 다음 슬라이드 보이기
+    slides[currentSlide].classList.remove('opacity-0');
+    slides[currentSlide].classList.add('opacity-100');
+
+  }, 4000);
+
   </script>
+
+  
 </body>
 </html>
